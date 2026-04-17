@@ -55,7 +55,100 @@ footer {
           Source Code Pro (utility mono)
    Colors: Brand palette HighPerch.co
 ════════════════════════════════════════ */
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+/* BODY */
+body {
+  font-family: 'Lekton', monospace;
+  background: #0f0f0f;
+  color: #fdfaf6;
+  line-height: 1.6;
+}
+
+/* WRAP */
+.wrap {
+  max-width: 1100px;
+  margin: auto;
+  padding: 80px 20px;
+}
+
+/* HEADINGS */
+.h2 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 42px;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+/* TEXT */
+.body-lg {
+  opacity: 0.8;
+  max-width: 520px;
+}
+
+/* SECTION SPACING */
+section {
+  padding: 80px 0;
+}
+
+/* CONTACT LINKS */
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.clink {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ICON */
+.clink-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clink-icon i {
+  font-size: 18px;
+  color: #624A41;
+}
+
+.clink-icon svg {
+  width: 18px;
+  height: 18px;
+  fill: #624A41;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin: 20px 0;
+}
+
+.footer-links i {
+  font-size: 20px;
+  color: #624A41;
+}
 :root {
   /* Brand Palette */
   --cream:        #E8E6D8;
