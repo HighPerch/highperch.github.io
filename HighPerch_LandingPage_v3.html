@@ -1,0 +1,2049 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HighPerch.co — eCommerce Growth Specialist</title>
+
+<!-- Google Fonts: closest available to requested fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Lekton:ital,wght@0,400;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Code+Pro:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ════════════════════════════════════════
+   HIGHPERCH.CO — BRAND SYSTEM v3
+   Fonts: Libre Baskerville (Times-condensed feel)
+          Lekton (geometric mono, editorial)
+          Source Code Pro (utility mono)
+   Colors: Brand palette HighPerch.co
+════════════════════════════════════════ */
+
+:root {
+  /* Brand Palette */
+  --cream:        #E8E6D8;
+  --cream-f:      #fdfaf6;
+  --sky:          #91A6EB;
+  --sky-dim:      #6b88d4;
+  --sky-pale:     #eef2fd;
+  --orange:       #892F1A;
+  --orange-mid:   #a83820;
+  --orange-pale:  #f5ede9;
+  --green:        #BDAF62;
+  --green-dim:    #9e9350;
+  --green-pale:   #f5f2e3;
+  --choco:        #624A41;
+  --choco-d:      #3D2C25;
+  --choco-ink:    #2A1F1A;
+
+  /* UI */
+  --text:         #2A1F1A;
+  --muted:        #7A6A63;
+  --border:       rgba(98,74,65,0.13);
+  --border-dark:  rgba(98,74,65,0.25);
+
+  /* Fonts */
+  --f-display:    'Libre Baskerville', 'Times New Roman', Georgia, serif;
+  --f-mono:       'Lekton', 'Courier New', monospace;
+  --f-body:       'Source Code Pro', 'Courier New', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--f-body);
+  background: var(--cream-f);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.7;
+  overflow-x: hidden;
+  font-weight: 300;
+}
+
+/* Grain texture */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 9999; opacity: 0.6;
+}
+
+/* ── SCROLLBAR */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--choco); border-radius: 2px; }
+
+/* ═══════════════════════════
+   NAVIGATION
+═══════════════════════════ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 200;
+  padding: 0 56px;
+  height: 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(253,250,246,0.9);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.3s;
+}
+
+.nav-logo {
+  font-family: var(--f-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--choco-d);
+  text-decoration: none;
+  letter-spacing: -0.03em;
+}
+
+.nav-logo .dot { color: var(--orange); }
+.nav-logo .tld { color: var(--green-dim); font-weight: 400; font-style: italic; font-size: 14px; }
+
+.nav-menu {
+  display: flex; gap: 40px; list-style: none;
+}
+
+.nav-menu a {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+  position: relative;
+}
+
+.nav-menu a::after {
+  content: '';
+  position: absolute; left: 0; bottom: -3px;
+  width: 0; height: 1px;
+  background: var(--orange);
+  transition: width 0.25s;
+}
+
+.nav-menu a:hover { color: var(--choco-d); }
+.nav-menu a:hover::after { width: 100%; }
+
+.nav-btn {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 9px 22px;
+  background: var(--choco-d);
+  color: var(--cream-f);
+  text-decoration: none;
+  border-radius: 2px;
+  transition: all 0.25s;
+}
+
+.nav-btn:hover {
+  background: var(--orange);
+  transform: translateY(-1px);
+}
+
+/* ═══════════════════════════
+   HERO
+═══════════════════════════ */
+.hero {
+  min-height: 100vh;
+  background: var(--choco-d);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Left diagonal split */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 55%; height: 100%;
+  background: var(--choco-ink);
+  clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Ambient glows */
+.hero-glow-1 {
+  position: absolute;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(145,166,235,0.12) 0%, transparent 70%);
+  top: -100px; right: 0;
+  pointer-events: none;
+}
+
+.hero-glow-2 {
+  position: absolute;
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, rgba(189,175,98,0.1) 0%, transparent 70%);
+  bottom: -50px; left: 30%;
+  pointer-events: none;
+}
+
+.hero-left {
+  position: relative; z-index: 1;
+  padding: 130px 64px 80px 72px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+
+.hero-label {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 32px;
+  display: flex; align-items: center; gap: 10px;
+  opacity: 0;
+  animation: up 1s cubic-bezier(0.16,1,0.3,1) forwards 0.15s;
+}
+
+.label-line {
+  width: 32px; height: 1px; background: var(--green);
+  animation: expand 1s cubic-bezier(0.16,1,0.3,1) forwards 0.5s;
+  transform-origin: left; transform: scaleX(0);
+}
+
+@keyframes expand { to { transform: scaleX(1); } }
+
+.hero-h1 {
+  font-family: var(--f-display);
+  font-size: clamp(42px, 5.5vw, 72px);
+  color: var(--cream-f);
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+  opacity: 0;
+  animation: up 1s cubic-bezier(0.16,1,0.3,1) forwards 0.3s;
+}
+
+.hero-h1 em { font-style: italic; color: var(--sky); }
+.hero-h1 .g { color: var(--green); }
+
+.hero-h1-sub {
+  font-family: var(--f-display);
+  font-size: clamp(24px, 3vw, 40px);
+  color: rgba(253,250,246,0.3);
+  line-height: 1.1;
+  font-style: italic;
+  margin-bottom: 36px;
+  letter-spacing: -0.02em;
+  opacity: 0;
+  animation: up 1s cubic-bezier(0.16,1,0.3,1) forwards 0.45s;
+}
+
+.hero-desc {
+  font-family: var(--f-body);
+  font-size: 14px;
+  color: rgba(253,250,246,0.5);
+  line-height: 1.85;
+  max-width: 460px;
+  margin-bottom: 48px;
+  font-weight: 300;
+  opacity: 0;
+  animation: up 1s cubic-bezier(0.16,1,0.3,1) forwards 0.6s;
+}
+
+.hero-btns {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  opacity: 0;
+  animation: up 1s cubic-bezier(0.16,1,0.3,1) forwards 0.75s;
+}
+
+.btn-fill {
+  font-family: var(--f-mono);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 14px 30px;
+  background: var(--orange); color: white;
+  text-decoration: none; border-radius: 2px;
+  display: inline-flex; align-items: center; gap: 10px;
+  transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+.btn-fill:hover {
+  background: var(--orange-mid);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(137,47,26,0.4);
+}
+
+.btn-ghost {
+  font-family: var(--f-mono);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 14px 30px;
+  background: transparent; color: rgba(253,250,246,0.6);
+  text-decoration: none; border-radius: 2px;
+  border: 1px solid rgba(253,250,246,0.18);
+  display: inline-flex; align-items: center; gap: 10px;
+  transition: all 0.25s;
+}
+
+.btn-ghost:hover {
+  border-color: rgba(253,250,246,0.4);
+  color: var(--cream-f);
+}
+
+/* HERO RIGHT */
+.hero-right {
+  position: relative; z-index: 1;
+  padding: 130px 72px 80px 48px;
+  display: flex; flex-direction: column;
+  justify-content: center; gap: 20px;
+  opacity: 0;
+  animation: up 1s cubic-bezier(0.16,1,0.3,1) forwards 0.9s;
+}
+
+.hero-right-label {
+  font-family: var(--f-mono);
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(253,250,246,0.25);
+  margin-bottom: 4px;
+}
+
+.channel-chips {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-bottom: 8px;
+}
+
+.chip {
+  font-family: var(--f-mono);
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 6px 14px;
+  border-radius: 2px;
+  border: 1px solid;
+  transition: all 0.2s;
+}
+
+.chip-cream { background: rgba(232,230,216,0.08); color: var(--cream); border-color: rgba(232,230,216,0.2); }
+.chip-sky   { background: rgba(145,166,235,0.1); color: var(--sky); border-color: rgba(145,166,235,0.3); }
+.chip-green { background: rgba(189,175,98,0.1); color: var(--green); border-color: rgba(189,175,98,0.3); }
+.chip-orange{ background: rgba(137,47,26,0.15); color: #d4896a; border-color: rgba(137,47,26,0.35); }
+.chip-gold  { background: rgba(200,170,80,0.1); color: #d4af37; border-color: rgba(200,170,80,0.3); }
+
+.chip:hover { transform: translateY(-2px); }
+
+.chip-section {
+  border-top: 1px solid rgba(253,250,246,0.06);
+  padding-top: 16px;
+}
+
+/* ═══════════════════════════
+   MARQUEE STRIP
+═══════════════════════════ */
+.marquee-strip {
+  background: var(--choco);
+  border-top: 1px solid rgba(253,250,246,0.06);
+  border-bottom: 1px solid rgba(253,250,246,0.06);
+  padding: 12px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-inner {
+  display: inline-block;
+  animation: marquee 30s linear infinite;
+}
+
+.marquee-inner span {
+  font-family: var(--f-mono);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(253,250,246,0.3);
+  padding: 0 32px;
+}
+
+.marquee-inner span.accent { color: var(--green); }
+.marquee-inner span.accent-sky { color: var(--sky); }
+
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ═══════════════════════════
+   SHARED SECTION STYLES
+═══════════════════════════ */
+.sec { padding: 100px 72px; }
+.wrap { max-width: 1120px; margin: 0 auto; }
+
+.eyebrow {
+  font-family: var(--f-mono);
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.26em; text-transform: uppercase;
+  color: var(--orange);
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 18px;
+}
+
+.eyebrow-line {
+  width: 28px; height: 1px; background: currentColor;
+}
+
+.h2 {
+  font-family: var(--f-display);
+  font-size: clamp(32px, 4vw, 54px);
+  color: var(--choco-d);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-bottom: 18px;
+}
+
+.h2 em { font-style: italic; color: var(--sky); }
+.h2 .warm { color: var(--orange); }
+.h2 .g { color: var(--green-dim); }
+
+.body-lg {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.8;
+  font-weight: 300;
+  max-width: 560px;
+}
+
+/* ═══════════════════════════
+   ABOUT
+═══════════════════════════ */
+.about-sec { background: var(--cream); }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 480px 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.about-pull {
+  font-family: var(--f-display);
+  font-size: 20px;
+  font-style: italic;
+  color: var(--choco);
+  line-height: 1.6;
+  border-left: 3px solid var(--green);
+  padding-left: 24px;
+  margin: 28px 0;
+  font-weight: 400;
+}
+
+.about-pills {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-top: 28px;
+}
+
+.pill {
+  font-family: var(--f-mono);
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 7px 16px;
+  border-radius: 100px;
+  border: 1px solid var(--border-dark);
+  color: var(--choco);
+  background: var(--cream-f);
+  transition: all 0.2s;
+}
+
+.pill:hover {
+  background: var(--choco-d);
+  color: var(--cream-f);
+  border-color: var(--choco-d);
+}
+
+/* Values */
+.values-wrap { display: flex; flex-direction: column; gap: 0; }
+
+.value-row {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 20px;
+  align-items: start;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+  transition: all 0.25s;
+}
+
+.value-row:last-child { border-bottom: none; }
+
+.value-row:hover { padding-left: 8px; }
+
+.v-num {
+  font-family: var(--f-display);
+  font-size: 28px;
+  font-style: italic;
+  color: var(--green);
+  line-height: 1;
+  padding-top: 2px;
+}
+
+.v-title {
+  font-family: var(--f-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--choco-d);
+  margin-bottom: 5px;
+}
+
+.v-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* ═══════════════════════════
+   WHY HIGHPERCH
+═══════════════════════════ */
+.why-sec {
+  background: var(--choco-d);
+  position: relative; overflow: hidden;
+}
+
+.why-sec::before {
+  content: '';
+  position: absolute; top: 0; right: 0;
+  width: 40%; height: 100%;
+  background: linear-gradient(to left, rgba(145,166,235,0.05) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  border: 1px solid rgba(253,250,246,0.08);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 56px;
+}
+
+.why-card {
+  padding: 36px 32px;
+  border-right: 1px solid rgba(253,250,246,0.08);
+  border-bottom: 1px solid rgba(253,250,246,0.08);
+  transition: background 0.3s;
+  position: relative;
+}
+
+.why-card:hover { background: rgba(253,250,246,0.04); }
+.why-card:nth-child(3n) { border-right: none; }
+.why-card:nth-child(n+4) { border-bottom: none; }
+
+.wc-num {
+  font-family: var(--f-mono);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.2em;
+  color: rgba(189,175,98,0.4);
+  margin-bottom: 16px;
+}
+
+.wc-title {
+  font-family: var(--f-display);
+  font-size: 17px;
+  color: var(--cream-f);
+  margin-bottom: 10px;
+  line-height: 1.25;
+}
+
+.wc-desc {
+  font-size: 13px;
+  color: rgba(253,250,246,0.4);
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+/* ═══════════════════════════
+   SERVICES
+═══════════════════════════ */
+.svc-sec { background: var(--cream-f); }
+
+.svc-header { text-align: center; margin-bottom: 80px; }
+.svc-header .body-lg { margin: 0 auto; }
+
+/* Service Category */
+.svc-cat {
+  margin-bottom: 72px;
+  padding-bottom: 72px;
+  border-bottom: 1px solid var(--border);
+}
+
+.svc-cat:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+
+.svc-cat-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  margin-bottom: 36px;
+  gap: 24px;
+}
+
+.svc-cat-num {
+  font-family: var(--f-display);
+  font-size: 80px;
+  font-style: italic;
+  font-weight: 700;
+  color: rgba(98,74,65,0.06);
+  line-height: 1;
+  margin-bottom: -10px;
+}
+
+.svc-cat-title {
+  font-family: var(--f-display);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--choco-d);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.svc-cat-sub {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-top: 6px;
+  font-weight: 300;
+}
+
+.svc-cat-tag {
+  font-family: var(--f-mono);
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 8px 18px;
+  border-radius: 2px;
+  white-space: nowrap;
+  align-self: flex-start;
+}
+
+.tag-orange { background: var(--orange-pale); color: var(--orange); }
+.tag-sky    { background: var(--sky-pale); color: var(--sky-dim); }
+.tag-green  { background: var(--green-pale); color: var(--green-dim); }
+
+/* Cards */
+.cards-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.cards-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.pkg {
+  background: var(--cream-f);
+  padding: 32px 28px 36px;
+  display: flex; flex-direction: column;
+  position: relative;
+  transition: background 0.25s;
+}
+
+.pkg:hover { background: white; }
+
+.pkg.featured {
+  background: var(--choco-d);
+}
+
+.pkg.featured:hover { background: var(--choco-ink); }
+
+.pkg-badge {
+  position: absolute;
+  top: 20px; right: 20px;
+  font-family: var(--f-mono);
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 4px 10px;
+  background: var(--orange);
+  color: white;
+  border-radius: 2px;
+}
+
+.pkg-tier {
+  font-family: var(--f-mono);
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 10px;
+}
+
+.pkg.featured .pkg-tier { color: var(--sky); }
+.pkg-sky .pkg-tier { color: var(--sky-dim); }
+
+.pkg-name {
+  font-family: var(--f-display);
+  font-size: 20px; font-weight: 700;
+  color: var(--choco-d);
+  line-height: 1.2;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.pkg.featured .pkg-name { color: var(--cream-f); }
+
+.pkg-line {
+  height: 1px;
+  background: var(--border);
+  margin: 18px 0;
+}
+
+.pkg.featured .pkg-line { background: rgba(253,250,246,0.1); }
+
+.pkg-desc {
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+
+.pkg.featured .pkg-desc { color: rgba(253,250,246,0.5); }
+
+.feat-list {
+  list-style: none;
+  flex: 1;
+  margin-bottom: 28px;
+}
+
+.feat-list li {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: 12.5px;
+  color: var(--text);
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(98,74,65,0.05);
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+.feat-list li:last-child { border-bottom: none; }
+
+.pkg.featured .feat-list li {
+  color: rgba(253,250,246,0.75);
+  border-bottom-color: rgba(253,250,246,0.06);
+}
+
+.fi {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  flex-shrink: 0; margin-top: 2px;
+}
+
+.fi-orange { color: var(--orange); }
+.fi-sky    { color: var(--sky); }
+.fi-green  { color: var(--green-dim); }
+.fi-white  { color: rgba(253,250,246,0.5); }
+
+.pkg-cta {
+  font-family: var(--f-mono);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 12px 20px;
+  border-radius: 2px;
+  text-decoration: none; text-align: center;
+  display: block;
+  transition: all 0.25s;
+}
+
+.cta-dark { border: 1px solid var(--choco-d); color: var(--choco-d); }
+.cta-dark:hover { background: var(--choco-d); color: white; }
+
+.cta-orange-fill { background: var(--orange); color: white; border: 1px solid var(--orange); }
+.cta-orange-fill:hover { background: var(--orange-mid); box-shadow: 0 6px 20px rgba(137,47,26,0.3); }
+
+.cta-ghost-w { border: 1px solid rgba(253,250,246,0.2); color: rgba(253,250,246,0.8); }
+.cta-ghost-w:hover { border-color: rgba(253,250,246,0.5); color: white; background: rgba(253,250,246,0.06); }
+
+.cta-sky { border: 1px solid rgba(145,166,235,0.35); color: var(--sky-dim); }
+.cta-sky:hover { background: var(--sky-pale); }
+
+/* ═══════════════════════════
+   CAPABILITIES BAND
+═══════════════════════════ */
+.cap-sec {
+  background: var(--choco-ink);
+  padding: 80px 72px;
+}
+
+.cap-inner { max-width: 1120px; margin: 0 auto; }
+
+.cap-title {
+  font-family: var(--f-display);
+  font-size: 13px;
+  font-style: italic;
+  color: rgba(253,250,246,0.3);
+  text-align: center;
+  margin-bottom: 48px;
+  letter-spacing: 0.04em;
+}
+
+.cap-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(253,250,246,0.06);
+  border: 1px solid rgba(253,250,246,0.06);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.cap-item {
+  padding: 28px 24px;
+  background: rgba(253,250,246,0.02);
+  transition: background 0.25s;
+}
+
+.cap-item:hover { background: rgba(253,250,246,0.06); }
+
+.cap-icon {
+  font-size: 22px; margin-bottom: 12px;
+}
+
+.cap-item-title {
+  font-family: var(--f-display);
+  font-size: 14px;
+  color: var(--cream-f);
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+.cap-item-desc {
+  font-size: 12px;
+  color: rgba(253,250,246,0.35);
+  line-height: 1.55;
+  font-weight: 300;
+}
+
+/* Marketplace logos strip */
+.mkt-strip {
+  margin-top: 48px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(253,250,246,0.07);
+}
+
+.mkt-label {
+  font-family: var(--f-mono);
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  color: rgba(253,250,246,0.2);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.mkt-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.mkt-chip {
+  font-family: var(--f-mono);
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 6px 14px;
+  border-radius: 2px;
+  border: 1px solid;
+  transition: all 0.2s;
+}
+
+.mkt-chip:hover { transform: translateY(-2px); }
+
+.mc-1 { color: #ee4d2d; border-color: rgba(238,77,45,0.3); background: rgba(238,77,45,0.06); }
+.mc-2 { color: #00aa5b; border-color: rgba(0,170,91,0.3); background: rgba(0,170,91,0.06); }
+.mc-3 { color: #ff0050; border-color: rgba(255,0,80,0.3); background: rgba(255,0,80,0.06); }
+.mc-4 { color: #f57224; border-color: rgba(245,114,36,0.3); background: rgba(245,114,36,0.06); }
+.mc-5 { color: #e50010; border-color: rgba(229,0,16,0.3); background: rgba(229,0,16,0.06); }
+.mc-6 { color: #ff6900; border-color: rgba(255,105,0,0.3); background: rgba(255,105,0,0.06); }
+.mc-7 { color: #1877f2; border-color: rgba(24,119,242,0.3); background: rgba(24,119,242,0.06); }
+.mc-8 { color: #96bf48; border-color: rgba(150,191,72,0.3); background: rgba(150,191,72,0.06); }
+.mc-9 { color: var(--sky); border-color: rgba(145,166,235,0.3); background: rgba(145,166,235,0.06); }
+
+/* ═══════════════════════════
+   BENEFITS
+═══════════════════════════ */
+.ben-sec { background: var(--cream); }
+
+.ben-grid {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.ben-left { position: sticky; top: 80px; }
+
+.ben-quote {
+  font-family: var(--f-display);
+  font-size: 18px;
+  font-style: italic;
+  color: var(--choco);
+  line-height: 1.7;
+  margin-top: 32px;
+  padding: 24px;
+  background: var(--cream-f);
+  border-left: 3px solid var(--orange);
+  border-radius: 0 4px 4px 0;
+}
+
+.ben-items {
+  display: flex; flex-direction: column; gap: 0;
+}
+
+.ben-item {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 20px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border);
+  transition: all 0.25s;
+}
+
+.ben-item:last-child { border-bottom: none; }
+.ben-item:hover { padding-left: 8px; }
+
+.ben-icon {
+  width: 44px; height: 44px;
+  border-radius: 2px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+  border: 1px solid var(--border);
+}
+
+.bi-c { background: var(--cream-f); }
+.bi-s { background: var(--sky-pale); }
+.bi-o { background: var(--orange-pale); }
+.bi-g { background: var(--green-pale); }
+
+.ben-title {
+  font-family: var(--f-display);
+  font-size: 16px; font-weight: 700;
+  color: var(--choco-d);
+  margin-bottom: 5px;
+}
+
+.ben-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+/* ═══════════════════════════
+   PROCESS
+═══════════════════════════ */
+.proc-sec {
+  background: var(--choco-d);
+  padding: 100px 72px;
+  position: relative; overflow: hidden;
+}
+
+.proc-sec::before {
+  content: '';
+  position: absolute; bottom: -20%; left: -5%;
+  width: 40%; height: 70%;
+  background: radial-gradient(ellipse, rgba(189,175,98,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.proc-header { text-align: center; margin-bottom: 72px; position: relative; z-index: 1; }
+.proc-header .eyebrow { justify-content: center; color: var(--green); }
+.proc-header .h2 { color: var(--cream-f); }
+.proc-header .h2 em { color: var(--orange); font-style: italic; }
+.proc-header .body-lg { color: rgba(253,250,246,0.4); margin: 0 auto; }
+
+.proc-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative; z-index: 1;
+  border: 1px solid rgba(253,250,246,0.08);
+  border-radius: 4px; overflow: hidden;
+}
+
+.proc-step {
+  padding: 36px 28px;
+  border-right: 1px solid rgba(253,250,246,0.08);
+  transition: background 0.25s;
+  cursor: default;
+}
+
+.proc-step:last-child { border-right: none; }
+.proc-step:hover { background: rgba(253,250,246,0.04); }
+
+.ps-num {
+  font-family: var(--f-display);
+  font-size: 48px; font-style: italic;
+  color: rgba(189,175,98,0.18);
+  line-height: 1; margin-bottom: 20px;
+  transition: color 0.25s;
+}
+
+.proc-step:hover .ps-num { color: rgba(189,175,98,0.35); }
+
+.ps-title {
+  font-family: var(--f-display);
+  font-size: 16px; font-weight: 700;
+  color: var(--cream-f);
+  margin-bottom: 8px;
+}
+
+.ps-desc {
+  font-size: 12.5px;
+  color: rgba(253,250,246,0.38);
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+/* ═══════════════════════════
+   CONTACT
+═══════════════════════════ */
+.contact-sec {
+  background: var(--cream-f);
+  border-top: 1px solid var(--border);
+}
+
+.contact-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.contact-title {
+  font-family: var(--f-display);
+  font-size: clamp(36px, 4.5vw, 58px);
+  color: var(--choco-d);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+}
+
+.contact-title em { font-style: italic; color: var(--orange); }
+
+.contact-body {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.85;
+  font-weight: 300;
+  margin-bottom: 40px;
+}
+
+.contact-links {
+  display: flex; flex-direction: column; gap: 10px;
+}
+
+.clink {
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 18px;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  text-decoration: none;
+  transition: all 0.25s;
+}
+
+.clink:hover {
+  border-color: var(--choco-d);
+  transform: translateX(4px);
+  box-shadow: 0 4px 20px rgba(98,74,65,0.08);
+}
+
+.clink-icon {
+  width: 40px; height: 40px;
+  border-radius: 2px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  border: 1px solid var(--border);
+  background: var(--cream-f);
+}
+
+.clink-name {
+  font-family: var(--f-display);
+  font-size: 14px; font-weight: 700;
+  color: var(--choco-d);
+}
+
+.clink-handle {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 1px;
+}
+
+.clink-arr {
+  font-size: 16px;
+  color: var(--border-dark);
+  transition: all 0.25s;
+}
+
+.clink:hover .clink-arr { color: var(--orange); transform: translateX(3px); }
+
+/* Right panel */
+.contact-panel {
+  background: var(--choco-d);
+  border-radius: 4px;
+  padding: 44px 40px;
+  position: relative; overflow: hidden;
+}
+
+.contact-panel::before {
+  content: '';
+  position: absolute; bottom: -20%; right: -10%;
+  width: 60%; height: 60%;
+  background: radial-gradient(ellipse, rgba(189,175,98,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.panel-eyebrow {
+  font-family: var(--f-mono);
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 18px;
+}
+
+.panel-title {
+  font-family: var(--f-display);
+  font-size: 22px;
+  color: var(--cream-f);
+  line-height: 1.25;
+  margin-bottom: 28px;
+}
+
+.panel-list { list-style: none; margin-bottom: 28px; }
+
+.panel-list li {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 13px;
+  color: rgba(253,250,246,0.65);
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(253,250,246,0.06);
+  line-height: 1.5; font-weight: 300;
+  position: relative; z-index: 1;
+}
+
+.panel-list li:last-child { border-bottom: none; }
+
+.pli-mark {
+  font-family: var(--f-mono);
+  font-size: 12px; color: var(--green);
+  flex-shrink: 0; margin-top: 2px;
+}
+
+.panel-note {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  color: rgba(253,250,246,0.22);
+  line-height: 1.7;
+  padding-top: 18px;
+  border-top: 1px solid rgba(253,250,246,0.07);
+  position: relative; z-index: 1;
+}
+
+/* ═══════════════════════════
+   FOOTER
+═══════════════════════════ */
+footer {
+  background: var(--choco-ink);
+  padding: 36px 72px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 20px;
+  border-top: 1px solid rgba(253,250,246,0.05);
+}
+
+.footer-logo {
+  font-family: var(--f-display);
+  font-size: 19px; font-weight: 700;
+  color: var(--cream-f);
+  letter-spacing: -0.02em;
+}
+
+.footer-logo .g { color: var(--green); }
+.footer-logo .tl { font-style: italic; color: rgba(253,250,246,0.3); font-weight: 400; font-size: 15px; }
+
+.footer-tag {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  color: rgba(253,250,246,0.2);
+  letter-spacing: 0.1em; margin-top: 4px;
+}
+
+.footer-links {
+  display: flex; gap: 28px;
+}
+
+.footer-links a {
+  font-family: var(--f-mono);
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(253,250,246,0.25);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--green); }
+
+/* ═══════════════════════════
+   ANIMATIONS & REVEAL
+═══════════════════════════ */
+@keyframes up {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+
+.reveal.in { opacity: 1; transform: translateY(0); }
+.d1 { transition-delay: 0.1s; }
+.d2 { transition-delay: 0.2s; }
+.d3 { transition-delay: 0.3s; }
+.d4 { transition-delay: 0.4s; }
+.d5 { transition-delay: 0.5s; }
+.d6 { transition-delay: 0.6s; }
+
+/* ═══════════════════════════
+   RESPONSIVE
+═══════════════════════════ */
+@media (max-width: 1024px) {
+  nav { padding: 0 28px; }
+  .nav-menu { display: none; }
+  .hero { grid-template-columns: 1fr; }
+  .hero::before { display: none; }
+  .hero-left { padding: 100px 32px 48px; }
+  .hero-right { padding: 32px 32px 72px; }
+  .sec { padding: 72px 32px; }
+  .cap-sec, .proc-sec { padding: 72px 32px; }
+  .about-grid, .ben-grid, .contact-wrap { grid-template-columns: 1fr; gap: 48px; }
+  .ben-left { position: static; }
+  .cards-3 { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr 1fr; }
+  .cap-grid { grid-template-columns: 1fr 1fr; }
+  .proc-steps { grid-template-columns: 1fr 1fr; }
+  footer { padding: 28px 32px; flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 640px) {
+  .hero-h1 { font-size: 38px; }
+  .hero-btns { flex-direction: column; }
+  .why-grid, .cap-grid, .proc-steps { grid-template-columns: 1fr; }
+  .cards-2 { grid-template-columns: 1fr; }
+  .svc-cat-header { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    High<span class="dot">·</span>Perch<span class="tld">.co</span>
+  </a>
+  <ul class="nav-menu">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#benefits">Benefits</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-btn">Get in Touch →</a>
+</nav>
+
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero" id="top">
+  <div class="hero-glow-1"></div>
+  <div class="hero-glow-2"></div>
+
+  <div class="hero-left">
+    <div class="hero-label">
+      <span class="label-line"></span>
+      eCommerce Growth Specialist
+    </div>
+
+    <h1 class="hero-h1">
+      End-to-End<br>
+      <em>eCommerce</em><br>
+      <span class="g">Management.</span>
+    </h1>
+
+    <p class="hero-h1-sub">Setup. Scale. Sustain.</p>
+
+    <p class="hero-desc">
+      HighPerch.co adalah partner pertumbuhan untuk brand & UMKM Indonesia
+      yang ingin membangun kehadiran di semua marketplace, mengelola iklan
+      secara efisien, dan memiliki sistem yang benar-benar bekerja —
+      dari setup toko hingga KOL management.
+    </p>
+
+    <div class="hero-btns">
+      <a href="#services" class="btn-fill">
+        Lihat Layanan
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#contact" class="btn-ghost">Hubungi Kami</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <p class="hero-right-label">All Platforms & Channels</p>
+
+    <div class="chip-section">
+      <p class="hero-right-label" style="margin-bottom:10px">Marketplace Indonesia</p>
+      <div class="channel-chips">
+        <span class="chip chip-cream">Shopee Mall</span>
+        <span class="chip chip-cream">Tokopedia Mall</span>
+        <span class="chip chip-cream">TikTok Mall</span>
+        <span class="chip chip-sky">Lazada</span>
+        <span class="chip chip-sky">Blibli</span>
+        <span class="chip chip-sky">Zalora</span>
+        <span class="chip chip-sky">Orami</span>
+      </div>
+    </div>
+
+    <div class="chip-section">
+      <p class="hero-right-label" style="margin-bottom:10px">Own Store & Commerce</p>
+      <div class="channel-chips">
+        <span class="chip chip-green">Shopify</span>
+        <span class="chip chip-green">WooCommerce</span>
+        <span class="chip chip-green">Magento</span>
+        <span class="chip chip-green">Meta Commerce</span>
+      </div>
+    </div>
+
+    <div class="chip-section">
+      <p class="hero-right-label" style="margin-bottom:10px">Ads & Growth</p>
+      <div class="channel-chips">
+        <span class="chip chip-orange">Shopee Ads</span>
+        <span class="chip chip-orange">TopAds</span>
+        <span class="chip chip-orange">TikTok Ads</span>
+        <span class="chip chip-orange">LazAds</span>
+        <span class="chip chip-orange">Meta Ads</span>
+        <span class="chip chip-orange">Google Ads</span>
+        <span class="chip chip-gold">KOL / Affiliate</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════ MARQUEE ═══════════ -->
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <span>Shopee Mall</span><span class="accent">◆</span>
+    <span>Tokopedia Mall</span><span class="accent">◆</span>
+    <span>TikTok Shop</span><span class="accent">◆</span>
+    <span>Lazada</span><span class="accent">◆</span>
+    <span>Blibli</span><span class="accent">◆</span>
+    <span>Zalora</span><span class="accent">◆</span>
+    <span class="accent-sky">Meta Commerce</span><span class="accent">◆</span>
+    <span class="accent-sky">Shopify</span><span class="accent">◆</span>
+    <span class="accent-sky">WooCommerce</span><span class="accent">◆</span>
+    <span>KOL Management</span><span class="accent">◆</span>
+    <span>Affiliate Program</span><span class="accent">◆</span>
+    <span>Marketplace Ads</span><span class="accent">◆</span>
+    <span>Meta Ads</span><span class="accent">◆</span>
+    <span>Google Shopping</span><span class="accent">◆</span>
+    <!-- duplicate for seamless loop -->
+    <span>Shopee Mall</span><span class="accent">◆</span>
+    <span>Tokopedia Mall</span><span class="accent">◆</span>
+    <span>TikTok Shop</span><span class="accent">◆</span>
+    <span>Lazada</span><span class="accent">◆</span>
+    <span>Blibli</span><span class="accent">◆</span>
+    <span>Zalora</span><span class="accent">◆</span>
+    <span class="accent-sky">Meta Commerce</span><span class="accent">◆</span>
+    <span class="accent-sky">Shopify</span><span class="accent">◆</span>
+    <span class="accent-sky">WooCommerce</span><span class="accent">◆</span>
+    <span>KOL Management</span><span class="accent">◆</span>
+    <span>Affiliate Program</span><span class="accent">◆</span>
+    <span>Marketplace Ads</span><span class="accent">◆</span>
+    <span>Meta Ads</span><span class="accent">◆</span>
+    <span>Google Shopping</span><span class="accent">◆</span>
+  </div>
+</div>
+
+
+<!-- ═══════════ ABOUT ═══════════ -->
+<section class="sec about-sec" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+
+      <div class="reveal">
+        <div class="eyebrow"><span class="eyebrow-line"></span>About HighPerch.co</div>
+        <h2 class="h2">Partner pertumbuhan<br>untuk brand yang<br>serius <em>berkembang.</em></h2>
+
+        <p class="about-pull">
+          "HighPerch.co lahir dari satu keyakinan — brand Indonesia
+          punya potensi luar biasa. Yang sering kurang adalah sistem,
+          eksekusi, dan partner yang genuinely peduli."
+        </p>
+
+        <p class="body-lg" style="max-width:100%">
+          Kami adalah tim spesialis eCommerce yang menangani semua aspek
+          pertumbuhan online — dari setup toko di marketplace premium,
+          pengelolaan website Shopify, kampanye iklan di semua platform,
+          hingga manajemen KOL dan program affiliate.
+          <br><br>
+          Tidak ada pendekatan satu ukuran untuk semua.
+          Setiap brand dan setiap pasar memiliki dinamikanya sendiri.
+        </p>
+
+        <div class="about-pills" style="margin-top:28px">
+          <span class="pill">Official Store Specialist</span>
+          <span class="pill">Shopee Mall</span>
+          <span class="pill">Tokopedia Mall</span>
+          <span class="pill">TikTok Mall</span>
+          <span class="pill">Shopify Expert</span>
+          <span class="pill">Meta Commerce</span>
+          <span class="pill">Ads Management</span>
+          <span class="pill">KOL & Affiliate</span>
+        </div>
+      </div>
+
+      <div class="values-wrap reveal d2">
+        <div class="value-row">
+          <div class="v-num">01</div>
+          <div>
+            <p class="v-title">Data-Driven Execution</p>
+            <p class="v-desc">Setiap keputusan berakar pada data yang nyata. Bukan asumsi, bukan feeling.</p>
+          </div>
+        </div>
+        <div class="value-row">
+          <div class="v-num">02</div>
+          <div>
+            <p class="v-title">Full Accountability</p>
+            <p class="v-desc">Kami bertanggung jawab penuh atas setiap deliverable. Tidak ada excuses, ada solusi.</p>
+          </div>
+        </div>
+        <div class="value-row">
+          <div class="v-num">03</div>
+          <div>
+            <p class="v-title">End-to-End Capability</p>
+            <p class="v-desc">Setup hingga scale — satu partner, satu visi, tidak perlu koordinasi dari banyak vendor.</p>
+          </div>
+        </div>
+        <div class="value-row">
+          <div class="v-num">04</div>
+          <div>
+            <p class="v-title">Transparent Communication</p>
+            <p class="v-desc">Laporan yang bisa dibaca, komunikasi yang terbuka, dan tidak ada kejutan di tengah jalan.</p>
+          </div>
+        </div>
+        <div class="value-row">
+          <div class="v-num">05</div>
+          <div>
+            <p class="v-title">Long-term Thinking</p>
+            <p class="v-desc">Kami tidak mengejar quick wins yang merusak brand. Growth yang sustainable selalu jadi prioritas.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════ WHY HIGHPERCH ═══════════ -->
+<section class="sec why-sec" id="why">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow" style="color:var(--sky)"><span class="eyebrow-line"></span>Why HighPerch.co</div>
+      <h2 class="h2" style="color:var(--cream-f)">Bukan hanya vendor.<br><em>Partner strategis</em> kamu.</h2>
+      <p class="body-lg" style="color:rgba(253,250,246,0.45); max-width:560px">
+        Yang membedakan HighPerch.co bukan hanya apa yang kami kerjakan —
+        tapi bagaimana kami mendekati setiap brand yang kami dampingi.
+      </p>
+    </div>
+
+    <div class="why-grid reveal d2">
+      <div class="why-card">
+        <p class="wc-num">/ 01</p>
+        <h3 class="wc-title">In-House Expertise,<br>Without Overhead</h3>
+        <p class="wc-desc">Dapatkan tim spesialis berpengalaman tanpa biaya gaji penuh, rekrutmen, dan manajemen karyawan.</p>
+      </div>
+      <div class="why-card">
+        <p class="wc-num">/ 02</p>
+        <h3 class="wc-title">One Partner,<br>All Channels</h3>
+        <p class="wc-desc">Dari marketplace hingga website sendiri, dari iklan hingga KOL — semua dikelola dengan satu visi yang konsisten.</p>
+      </div>
+      <div class="why-card">
+        <p class="wc-num">/ 03</p>
+        <h3 class="wc-title">Premium Marketplace<br>Specialist</h3>
+        <p class="wc-desc">Spesialis Official Store dan program premium di Shopee Mall, Tokopedia Mall, dan TikTok Mall.</p>
+      </div>
+      <div class="why-card">
+        <p class="wc-num">/ 04</p>
+        <h3 class="wc-title">Transparent Reporting,<br>Every Time</h3>
+        <p class="wc-desc">Laporan yang bisa kamu baca dan pahami — bukan dokumen tebal penuh jargon tanpa insight.</p>
+      </div>
+      <div class="why-card">
+        <p class="wc-num">/ 05</p>
+        <h3 class="wc-title">Honest Recommendations,<br>Always</h3>
+        <p class="wc-desc">Kami akan jujur ketika ada pendekatan yang lebih baik — bahkan jika itu berarti mengubah rencana yang sudah ada.</p>
+      </div>
+      <div class="why-card">
+        <p class="wc-num">/ 06</p>
+        <h3 class="wc-title">Flexible Engagement,<br>Your Terms</h3>
+        <p class="wc-desc">Dari satu kali audit hingga retainer penuh — disesuaikan dengan fase bisnis dan kebutuhan saat ini.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════ SERVICES ═══════════ -->
+<section class="sec svc-sec" id="services">
+  <div class="wrap">
+    <div class="svc-header reveal">
+      <div class="eyebrow" style="justify-content:center"><span class="eyebrow-line"></span>Our Services</div>
+      <h2 class="h2">Solusi lengkap untuk<br>pertumbuhan <em>eCommerce-mu.</em></h2>
+      <p class="body-lg">Tiga layanan utama yang mencakup semua aspek kehadiran digital brand kamu.</p>
+    </div>
+
+    <!-- SERVICE 1: MARKETPLACE MANAGEMENT -->
+    <div class="svc-cat reveal">
+      <div class="svc-cat-header">
+        <div>
+          <div class="svc-cat-num">01</div>
+          <div class="svc-cat-title">Pengelolaan Marketplace<br>& eCommerce Management</div>
+          <p class="svc-cat-sub">
+            Pengelolaan toko end-to-end di semua marketplace Indonesia —
+            termasuk program premium Official Store di Shopee Mall, Tokopedia Mall, TikTok Mall.
+          </p>
+        </div>
+        <span class="svc-cat-tag tag-orange">All Marketplaces</span>
+      </div>
+
+      <div class="cards-3">
+        <div class="pkg">
+          <p class="pkg-tier">Essentials</p>
+          <h3 class="pkg-name">Store Audit & Optimasi</h3>
+          <div class="pkg-line"></div>
+          <p class="pkg-desc">Untuk brand yang butuh arah jelas — apa yang perlu diperbaiki dan dari mana harus mulai.</p>
+          <ul class="feat-list">
+            <li><span class="fi fi-orange">→</span>Audit menyeluruh listing, foto, judul, pricing</li>
+            <li><span class="fi fi-orange">→</span>Analisa CTR, conversion rate, return rate</li>
+            <li><span class="fi fi-orange">→</span>Benchmark kompetitor & peluang keyword</li>
+            <li><span class="fi fi-orange">→</span>Laporan prioritas siap dieksekusi</li>
+            <li><span class="fi fi-orange">→</span>1× review session (call 30 mnt)</li>
+          </ul>
+          <a href="#contact" class="pkg-cta cta-dark">Inquiry →</a>
+        </div>
+
+        <div class="pkg featured">
+          <div class="pkg-badge">Popular</div>
+          <p class="pkg-tier">Growth</p>
+          <h3 class="pkg-name">Setup Sistem & Operasional</h3>
+          <div class="pkg-line"></div>
+          <p class="pkg-desc">Untuk brand yang mau operasional berjalan rapi dan terstruktur — di semua marketplace aktif.</p>
+          <ul class="feat-list">
+            <li><span class="fi fi-white">→</span>Semua yang ada di Essentials</li>
+            <li><span class="fi fi-white">→</span>Setup / optimasi Official Store (Mall)</li>
+            <li><span class="fi fi-white">→</span>SOP operasional harian & mingguan</li>
+            <li><span class="fi fi-white">→</span>Template CS & chat management</li>
+            <li><span class="fi fi-white">→</span>Tracker omzet, profit, cashflow</li>
+            <li><span class="fi fi-white">→</span>Kalender promo & strategi kampanye</li>
+            <li><span class="fi fi-white">→</span>Pendampingan implementasi 2 minggu</li>
+          </ul>
+          <a href="#contact" class="pkg-cta cta-orange-fill">Inquiry →</a>
+        </div>
+
+        <div class="pkg">
+          <p class="pkg-tier">Full Management</p>
+          <h3 class="pkg-name">eCommerce Manager</h3>
+          <div class="pkg-line"></div>
+          <p class="pkg-desc">Operasional end-to-end — listing, iklan, CS, stok, laporan. HighPerch sebagai extension tim internalmu.</p>
+          <ul class="feat-list">
+            <li><span class="fi fi-orange">→</span>Semua yang ada di Growth</li>
+            <li><span class="fi fi-orange">→</span>Pengelolaan marketplace multi-platform</li>
+            <li><span class="fi fi-orange">→</span>Campaign management Shopee / Tokopedia / TikTok</li>
+            <li><span class="fi fi-orange">→</span>Manajemen iklan marketplace (Shopee Ads, TopAds, LazAds)</li>
+            <li><span class="fi fi-orange">→</span>Koordinasi stok & supplier</li>
+            <li><span class="fi fi-orange">→</span>Laporan performa mingguan & bulanan</li>
+            <li><span class="fi fi-orange">→</span>Akses langsung WA hari kerja</li>
+          </ul>
+          <a href="#contact" class="pkg-cta cta-dark">Inquiry →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SERVICE 2: ADS & DIGITAL MARKETING -->
+    <div class="svc-cat reveal">
+      <div class="svc-cat-header">
+        <div>
+          <div class="svc-cat-num">02</div>
+          <div class="svc-cat-title">Ads, KOL & Affiliate<br>Management</div>
+          <p class="svc-cat-sub">
+            Dari iklan marketplace hingga Meta & Google Ads — ditambah
+            pengelolaan KOL dan program affiliate untuk growth yang lebih luas.
+          </p>
+        </div>
+        <span class="svc-cat-tag tag-sky">Paid & Organic Growth</span>
+      </div>
+
+      <div class="cards-3">
+        <div class="pkg">
+          <p class="pkg-tier">Paid Ads</p>
+          <h3 class="pkg-name">Marketplace & Social Ads</h3>
+          <div class="pkg-line"></div>
+          <p class="pkg-desc">Kelola iklan di semua marketplace dan platform sosial dengan strategi berbasis data.</p>
+          <ul class="feat-list">
+            <li><span class="fi fi-sky">→</span>Shopee Ads (Product, Search, Discovery)</li>
+            <li><span class="fi fi-sky">→</span>Tokopedia TopAds (Product, Headline)</li>
+            <li><span class="fi fi-sky">→</span>TikTok Ads Manager (In-feed, Spark)</li>
+            <li><span class="fi fi-sky">→</span>LazAds & Blibli Ads</li>
+            <li><span class="fi fi-sky">→</span>Meta Ads (Facebook & Instagram)</li>
+            <li><span class="fi fi-sky">→</span>Google Shopping & Performance Max</li>
+            <li><span class="fi fi-sky">→</span>ROAS monitoring & optimasi mingguan</li>
+          </ul>
+          <a href="#contact" class="pkg-cta cta-sky">Inquiry →</a>
+        </div>
+
+        <div class="pkg">
+          <p class="pkg-tier">KOL Management</p>
+          <h3 class="pkg-name">KOL & Influencer Program</h3>
+          <div class="pkg-line"></div>
+          <p class="pkg-desc">Identifikasi, outreach, dan manajemen KOL yang tepat untuk brand kamu di semua platform.</p>
+          <ul class="feat-list">
+            <li><span class="fi fi-sky">→</span>Riset & seleksi KOL yang relevan</li>
+            <li><span class="fi fi-sky">→</span>Negosiasi & kontrak KOL</li>
+            <li><span class="fi fi-sky">→</span>Brief & content guidelines</li>
+            <li><span class="fi fi-sky">→</span>Monitoring & performance tracking</li>
+            <li><span class="fi fi-sky">→</span>TikTok Affiliate Creator management</li>
+            <li><span class="fi fi-sky">→</span>Laporan ROI per KOL</li>
+          </ul>
+          <a href="#contact" class="pkg-cta cta-sky">Inquiry →</a>
+        </div>
+
+        <div class="pkg">
+          <p class="pkg-tier">Affiliate</p>
+          <h3 class="pkg-name">Affiliate Program Setup & Management</h3>
+          <div class="pkg-line"></div>
+          <p class="pkg-desc">Bangun dan kelola program affiliate yang menghasilkan — tanpa biaya tetap yang besar.</p>
+          <ul class="feat-list">
+            <li><span class="fi fi-sky">→</span>Setup program affiliate (Shopee, TikTok)</li>
+            <li><span class="fi fi-sky">→</span>Rekrutmen & onboarding affiliate</li>
+            <li><span class="fi fi-sky">→</span>Kit affiliate (foto, caption template)</li>
+            <li><span class="fi fi-sky">→</span>Komisi & payment management</li>
+            <li><span class="fi fi-sky">→</span>Performance tracking per affiliate</li>
+            <li><span class="fi fi-sky">→</span>Laporan performa program bulanan</li>
+          </ul>
+          <a href="#contact" class="pkg-cta cta-sky">Inquiry →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SERVICE 3: WEBSITE & OWN STORE -->
+    <div class="svc-cat reveal">
+      <div class="svc-cat-header">
+        <div>
+          <div class="svc-cat-num">03</div>
+          <div class="svc-cat-title">Website & Own Store<br>Development</div>
+          <p class="svc-cat-sub">
+            Bangun dan optimasi toko online sendiri di luar marketplace —
+            Shopify, WooCommerce, Magento, atau Meta Commerce.
+          </p>
+        </div>
+        <span class="svc-cat-tag tag-green">Own Channel</span>
+      </div>
+
+      <div class="cards-2">
+        <div class="pkg">
+          <p class="pkg-tier" style="color:var(--green-dim)">Setup & Build</p>
+          <h3 class="pkg-name">Website eCommerce Setup</h3>
+          <div class="pkg-line"></div>
+          <p class="pkg-desc">Setup dan build website toko online yang siap berjualan — dari Shopify hingga WooCommerce.</p>
+          <ul class="feat-list">
+            <li><span class="fi fi-green">→</span>Shopify store setup & configuration</li>
+            <li><span class="fi fi-green">→</span>WooCommerce / Magento setup</li>
+            <li><span class="fi fi-green">→</span>Meta Commerce (Facebook & IG Shop)</li>
+            <li><span class="fi fi-green">→</span>Product catalog upload & optimasi</li>
+            <li><span class="fi fi-green">→</span>Payment gateway & shipping setup</li>
+            <li><span class="fi fi-green">→</span>Basic SEO & page speed optimasi</li>
+            <li><span class="fi fi-green">→</span>Integrasi marketplace (Shopify + Shopee / Tokopedia)</li>
+          </ul>
+          <a href="#contact" class="pkg-cta" style="border:1px solid var(--green-dim);color:var(--green-dim)" onmouseover="this.style.background='var(--green-pale)'" onmouseout="this.style.background='transparent'">Inquiry →</a>
+        </div>
+
+        <div class="pkg">
+          <p class="pkg-tier" style="color:var(--green-dim)">Ongoing Management</p>
+          <h3 class="pkg-name">eCommerce Website Management</h3>
+          <div class="pkg-line"></div>
+          <p class="pkg-desc">Kelola dan optimalkan website toko online kamu secara berkelanjutan — konversi, traffic, dan pengalaman pembeli.</p>
+          <ul class="feat-list">
+            <li><span class="fi fi-green">→</span>Semua yang ada di Setup</li>
+            <li><span class="fi fi-green">→</span>Conversion rate optimization (CRO)</li>
+            <li><span class="fi fi-green">→</span>Google Shopping & Performance Max</li>
+            <li><span class="fi fi-green">→</span>Email marketing & retargeting setup</li>
+            <li><span class="fi fi-green">→</span>Analytics & heatmap monitoring</li>
+            <li><span class="fi fi-green">→</span>A/B testing produk & landing page</li>
+            <li><span class="fi fi-green">→</span>Laporan traffic & konversi bulanan</li>
+          </ul>
+          <a href="#contact" class="pkg-cta" style="border:1px solid var(--green-dim);color:var(--green-dim)" onmouseover="this.style.background='var(--green-pale)'" onmouseout="this.style.background='transparent'">Inquiry →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SERVICE 4: SOCIAL MEDIA -->
+    <div class="svc-cat reveal">
+      <div class="svc-cat-header">
+        <div>
+          <div class="svc-cat-num">04</div>
+          <div class="svc-cat-title">Social Media Management<br>& Strategy</div>
+          <p class="svc-cat-sub">Konten yang konsisten, engagement yang tumbuh, dan brand presence yang kuat di semua platform.</p>
+        </div>
+        <span class="svc-cat-tag tag-sky">Content & Community</span>
+      </div>
+
+      <div class="cards-2">
+        <div class="pkg">
+          <p class="pkg-tier">Strategy</p>
+          <h3 class="pkg-name">Social Media Strategy</h3>
+          <div class="pkg-line"></div>
+          <p class="pkg-desc">Untuk brand yang mau punya arah konten yang jelas — klien yang mengeksekusi sendiri.</p>
+          <ul class="feat-list">
+            <li><span class="fi fi-sky">→</span>Audit akun & analisa positioning</li>
+            <li><span class="fi fi-sky">→</span>Brand voice & tone guide</li>
+            <li><span class="fi fi-sky">→</span>Content calendar 30 hari</li>
+            <li><span class="fi fi-sky">→</span>Hook formula & caption framework</li>
+            <li><span class="fi fi-sky">→</span>Design guide Canva</li>
+            <li><span class="fi fi-sky">→</span>1× handover session</li>
+          </ul>
+          <a href="#contact" class="pkg-cta cta-sky">Inquiry →</a>
+        </div>
+
+        <div class="pkg" style="background:linear-gradient(145deg, var(--sky) 0%, var(--sky-dim) 100%)">
+          <p class="pkg-tier" style="color:rgba(255,255,255,0.6)">Full Management</p>
+          <h3 class="pkg-name" style="color:white">Social Media Management</h3>
+          <div class="pkg-line" style="background:rgba(255,255,255,0.2)"></div>
+          <p class="pkg-desc" style="color:rgba(255,255,255,0.65)">Semua yang ada di Strategy + eksekusi harian penuh.</p>
+          <ul class="feat-list">
+            <li><span style="color:rgba(255,255,255,0.7);font-family:var(--f-mono);font-size:10px;flex-shrink:0;margin-top:2px">→</span><span style="color:rgba(255,255,255,0.85)">Pembuatan & posting konten harian</span></li>
+            <li><span style="color:rgba(255,255,255,0.7);font-family:var(--f-mono);font-size:10px;flex-shrink:0;margin-top:2px">→</span><span style="color:rgba(255,255,255,0.85)">Community management & engagement</span></li>
+            <li><span style="color:rgba(255,255,255,0.7);font-family:var(--f-mono);font-size:10px;flex-shrink:0;margin-top:2px">→</span><span style="color:rgba(255,255,255,0.85)">Konten reaktif topik hangat</span></li>
+            <li><span style="color:rgba(255,255,255,0.7);font-family:var(--f-mono);font-size:10px;flex-shrink:0;margin-top:2px">→</span><span style="color:rgba(255,255,255,0.85)">Laporan performa bulanan</span></li>
+            <li><span style="color:rgba(255,255,255,0.7);font-family:var(--f-mono);font-size:10px;flex-shrink:0;margin-top:2px">→</span><span style="color:rgba(255,255,255,0.85)">Approval konten sebelum posting</span></li>
+            <li><span style="color:rgba(255,255,255,0.7);font-family:var(--f-mono);font-size:10px;flex-shrink:0;margin-top:2px">→</span><span style="color:rgba(255,255,255,0.85)">Akses WA langsung hari kerja</span></li>
+          </ul>
+          <a href="#contact" class="pkg-cta cta-ghost-w">Inquiry →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════ CAPABILITIES ═══════════ -->
+<div class="cap-sec">
+  <div class="cap-inner">
+    <p class="cap-title">— Full Spectrum eCommerce Capabilities —</p>
+
+    <div class="cap-grid">
+      <div class="cap-item">
+        <div class="cap-icon">🛒</div>
+        <p class="cap-item-title">Marketplace Management</p>
+        <p class="cap-item-desc">Shopee · Tokopedia · TikTok Shop · Lazada · Blibli · Zalora · Orami</p>
+      </div>
+      <div class="cap-item">
+        <div class="cap-icon">⭐</div>
+        <p class="cap-item-title">Official Store Premium</p>
+        <p class="cap-item-desc">Shopee Mall · Tokopedia Mall · TikTok Mall — setup & ongoing management</p>
+      </div>
+      <div class="cap-item">
+        <div class="cap-icon">💻</div>
+        <p class="cap-item-title">Website Own Store</p>
+        <p class="cap-item-desc">Shopify · WooCommerce · Magento · Meta Commerce setup & management</p>
+      </div>
+      <div class="cap-item">
+        <div class="cap-icon">📢</div>
+        <p class="cap-item-title">Paid Ads Management</p>
+        <p class="cap-item-desc">Shopee Ads · TopAds · TikTok Ads · LazAds · Blibli Ads · Meta Ads · Google Ads</p>
+      </div>
+      <div class="cap-item">
+        <div class="cap-icon">🎯</div>
+        <p class="cap-item-title">KOL Management</p>
+        <p class="cap-item-desc">Riset · Outreach · Brief · Contract · Monitoring · ROI Tracking</p>
+      </div>
+      <div class="cap-item">
+        <div class="cap-icon">🔗</div>
+        <p class="cap-item-title">Affiliate Program</p>
+        <p class="cap-item-desc">Shopee Affiliate · TikTok Affiliate Creator · Program setup & management</p>
+      </div>
+      <div class="cap-item">
+        <div class="cap-icon">📱</div>
+        <p class="cap-item-title">Social Media</p>
+        <p class="cap-item-desc">Threads · Instagram · TikTok · X — strategy & full management</p>
+      </div>
+      <div class="cap-item">
+        <div class="cap-icon">📊</div>
+        <p class="cap-item-title">Analytics & Reporting</p>
+        <p class="cap-item-desc">Dashboard performa · KPI tracking · Insight & rekomendasi berbasis data</p>
+      </div>
+    </div>
+
+    <div class="mkt-strip">
+      <p class="mkt-label">Marketplace & Platform Partners</p>
+      <div class="mkt-row">
+        <span class="mkt-chip mc-1">Shopee</span>
+        <span class="mkt-chip mc-2">Tokopedia</span>
+        <span class="mkt-chip mc-3">TikTok Shop</span>
+        <span class="mkt-chip mc-4">Lazada</span>
+        <span class="mkt-chip mc-5">Blibli</span>
+        <span class="mkt-chip mc-6">Zalora</span>
+        <span class="mkt-chip mc-7">Meta / Facebook</span>
+        <span class="mkt-chip mc-8">Shopify</span>
+        <span class="mkt-chip mc-9">Google Shopping</span>
+        <span class="mkt-chip" style="color:var(--green);border-color:rgba(189,175,98,0.3);background:rgba(189,175,98,0.06)">WooCommerce</span>
+        <span class="mkt-chip" style="color:#d4af37;border-color:rgba(212,175,55,0.3);background:rgba(212,175,55,0.06)">Magento</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════ BENEFITS ═══════════ -->
+<section class="sec ben-sec" id="benefits">
+  <div class="wrap">
+    <div class="ben-grid">
+      <div class="ben-left reveal">
+        <div class="eyebrow"><span class="eyebrow-line"></span>Benefits</div>
+        <h2 class="h2">Apa yang kamu<br>dapatkan bersama<br><em>HighPerch.co?</em></h2>
+
+        <div class="ben-quote">
+          "Growth yang sustainable selalu berakar pada fondasi yang kuat —
+          bukan pada trik jangka pendek."
+        </div>
+      </div>
+
+      <div class="ben-items reveal d2">
+        <div class="ben-item">
+          <div class="ben-icon bi-s">🎯</div>
+          <div>
+            <p class="ben-title">Keputusan Berbasis Data, Bukan Asumsi</p>
+            <p class="ben-desc">Setiap rekomendasi didukung angka nyata. Dari CTR listing hingga ROAS iklan — semua terukur dan transparan.</p>
+          </div>
+        </div>
+        <div class="ben-item">
+          <div class="ben-icon bi-o">⏱️</div>
+          <div>
+            <p class="ben-title">Fokus Tanpa Distraksi Operasional</p>
+            <p class="ben-desc">Kamu fokus pada produk dan bisnis inti. Semua operasional marketplace, iklan, dan konten — HighPerch yang kelola.</p>
+          </div>
+        </div>
+        <div class="ben-item">
+          <div class="ben-icon bi-g">📋</div>
+          <div>
+            <p class="ben-title">Satu Partner untuk Semua Channel</p>
+            <p class="ben-desc">Tidak perlu koordinasi antar berbagai vendor. Marketplace, website, ads, KOL, affiliate — satu tim, satu visi.</p>
+          </div>
+        </div>
+        <div class="ben-item">
+          <div class="ben-icon bi-c">🚀</div>
+          <div>
+            <p class="ben-title">Siap Saat Momentum Datang</p>
+            <p class="ben-desc">Sistem dan struktur yang sudah terbentuk membuat brand kamu siap memanfaatkan viral moment, campaign besar, dan musim ramai.</p>
+          </div>
+        </div>
+        <div class="ben-item">
+          <div class="ben-icon bi-s">⭐</div>
+          <div>
+            <p class="ben-title">Akses ke Program Premium Marketplace</p>
+            <p class="ben-desc">Pengalaman mengelola Official Store di Shopee Mall, Tokopedia Mall, dan TikTok Mall — dengan standar yang sesuai requirement platform.</p>
+          </div>
+        </div>
+        <div class="ben-item">
+          <div class="ben-icon bi-o">💬</div>
+          <div>
+            <p class="ben-title">Komunikasi yang Terbuka dan Jujur</p>
+            <p class="ben-desc">Tidak ada surprise di tengah jalan. Laporan rutin, komunikasi yang responsif, dan rekomendasi yang berbicara sejujurnya.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════ PROCESS ═══════════ -->
+<section class="proc-sec" id="process">
+  <div class="wrap">
+    <div class="proc-header reveal">
+      <div class="eyebrow"><span class="eyebrow-line"></span>How It Works</div>
+      <h2 class="h2">Proses menjadi <em>klien</em><br>HighPerch.co</h2>
+      <p class="body-lg">Tidak ada commitment di awal. Kami mulai dari percakapan yang jujur — baru tentukan langkah yang paling tepat.</p>
+    </div>
+
+    <div class="proc-steps reveal d2">
+      <div class="proc-step">
+        <div class="ps-num">01</div>
+        <p class="ps-title">Hubungi Kami</p>
+        <p class="ps-desc">DM via Threads, Instagram, atau WhatsApp. Ceritakan situasi brand atau bisnis kamu sekarang.</p>
+      </div>
+      <div class="proc-step">
+        <div class="ps-num">02</div>
+        <p class="ps-title">Discovery Call</p>
+        <p class="ps-desc">30–45 menit. Kami dengarkan, tanya, dan pahami kebutuhan serta tujuan bisnis kamu. Gratis, tanpa commitment.</p>
+      </div>
+      <div class="proc-step">
+        <div class="ps-num">03</div>
+        <p class="ps-title">Proposal</p>
+        <p class="ps-desc">Rekomendasi paket terbaik dengan scope pekerjaan yang jelas. Transparansi penuh — tidak ada biaya tersembunyi.</p>
+      </div>
+      <div class="proc-step">
+        <div class="ps-num">04</div>
+        <p class="ps-title">Mulai & Grow</p>
+        <p class="ps-desc">Onboarding, audit awal, dan eksekusi sesuai timeline yang disepakati. Laporan rutin dari hari pertama.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<section class="sec contact-sec" id="contact">
+  <div class="wrap">
+    <div class="contact-wrap">
+
+      <div class="reveal">
+        <div class="eyebrow"><span class="eyebrow-line"></span>Get in Touch</div>
+        <h2 class="contact-title">
+          Mari mulai<br>percakapan<br><em>itu.</em>
+        </h2>
+        <p class="contact-body">
+          Tidak ada commitment di sesi pertama.
+          Hanya percakapan yang jujur tentang bagaimana
+          HighPerch.co bisa membantu brand kamu tumbuh.
+        </p>
+
+        <div class="contact-links">
+          <a href="https://threads.net/@highperch.co" target="_blank" class="clink">
+            <div class="clink-icon">🧵</div>
+            <div>
+              <p class="clink-name">Threads</p>
+              <p class="clink-handle">@highperch.co · DM "HALO"</p>
+            </div>
+            <span class="clink-arr">→</span>
+          </a>
+          <a href="https://instagram.com/highperch.co" target="_blank" class="clink">
+            <div class="clink-icon">📸</div>
+            <div>
+              <p class="clink-name">Instagram</p>
+              <p class="clink-handle">@highperch.co</p>
+            </div>
+            <span class="clink-arr">→</span>
+          </a>
+          <a href="https://wa.me/6281296028636" target="_blank" class="clink">
+            <div class="clink-icon">💬</div>
+            <div>
+              <p class="clink-name">WhatsApp</p>
+              <p class="clink-handle">+62 812 9602 8636</p>
+            </div>
+            <span class="clink-arr">→</span>
+          </a>
+          <a href="mailto:highperch.commerce@gmail.com" class="clink">
+            <div class="clink-icon">✉️</div>
+            <div>
+              <p class="clink-name">Email</p>
+              <p class="clink-handle">highperch.commerce@gmail.com</p>
+            </div>
+            <span class="clink-arr">→</span>
+          </a>
+          <a href="https://twitter.com/highperch_co" target="_blank" class="clink">
+            <div class="clink-icon">𝕏</div>
+            <div>
+              <p class="clink-name">X / Twitter</p>
+              <p class="clink-handle">@highperch_co</p>
+            </div>
+            <span class="clink-arr">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="reveal d3">
+        <div class="contact-panel">
+          <p class="panel-eyebrow">Our Promise</p>
+          <h3 class="panel-title">Yang selalu kamu dapatkan dari HighPerch.co</h3>
+          <ul class="panel-list">
+            <li><span class="pli-mark">✓</span>Satu discovery call gratis tanpa pressure dan tanpa commitment</li>
+            <li><span class="pli-mark">✓</span>Rekomendasi yang jujur — termasuk kalau ada pilihan yang lebih baik</li>
+            <li><span class="pli-mark">✓</span>Scope pekerjaan yang jelas sebelum apapun dimulai</li>
+            <li><span class="pli-mark">✓</span>Komunikasi yang terbuka dan responsif sepanjang kerjasama</li>
+            <li><span class="pli-mark">✓</span>Laporan yang bisa dibaca dan ditindaklanjuti — bukan hanya angka</li>
+            <li><span class="pli-mark">✓</span>Pendekatan yang disesuaikan — tidak ada paket standar untuk semua</li>
+          </ul>
+          <p class="panel-note">
+            HighPerch.co tidak menjual paket yang sama untuk semua orang.
+            Setiap brand punya konteks yang berbeda — dan kami hormati itu.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div>
+    <p class="footer-logo">High<span class="g">·</span>Perch<span class="tl">.co</span></p>
+    <p class="footer-tag">eCommerce Growth Specialist · Jakarta, Indonesia</p>
+  </div>
+  <div class="footer-links">
+    <a href="https://threads.net/@highperch.co" target="_blank">Threads</a>
+    <a href="https://instagram.com/highperch.co" target="_blank">Instagram</a>
+    <a href="https://twitter.com/highperch_co" target="_blank">X</a>
+    <a href="mailto:highperch.commerce@gmail.com">Email</a>
+    <a href="https://wa.me/6281296028636" target="_blank">WhatsApp</a>
+  </div>
+  <p style="font-family:var(--f-mono);font-size:10px;color:rgba(253,250,246,0.15)">© 2026 HighPerch.co</p>
+</footer>
+
+
+<script>
+// Scroll reveal
+const els = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.07, rootMargin: '0px 0px -32px 0px' });
+els.forEach(el => obs.observe(el));
+
+// Nav bg on scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  const s = window.scrollY > 60;
+  nav.style.background = s
+    ? 'rgba(253,250,246,0.97)'
+    : 'rgba(253,250,246,0.9)';
+  nav.style.boxShadow = s ? '0 1px 0 rgba(98,74,65,0.12)' : 'none';
+}, { passive: true });
+
+// Smooth anchor
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
+</script>
+
+</body>
+</html>
