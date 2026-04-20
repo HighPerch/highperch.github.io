@@ -898,19 +898,26 @@ nav {
 }
 
 .ben-items {
-  display: flex; flex-direction: column; gap: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
 .ben-item {
   display: grid;
   grid-template-columns: 48px 1fr;
   gap: 20px;
+
   padding: 28px 0;
   border-bottom: 1px solid var(--border);
-  transition: all 0.25s;
+
+  align-items: start; /* biar icon & text sejajar */
+  transition: all 0.25s ease;
 }
 
-.ben-item:last-child { border-bottom: none; }
+.ben-item:last-child {
+  border-bottom: none;
+}
 
 .ben-item:hover {
   padding-left: 8px;
@@ -933,12 +940,14 @@ nav {
 
   opacity: 0.85;
   transition: all 0.25s ease;
+}
 
-   .ben-icon i {
+/* icon warna brand */
+.ben-icon i {
   font-size: 20px;
   color: #624A41;
-   }
-   
+}
+
 /* ===== OPTIONAL HOVER ===== */
 .ben-item:hover .ben-icon {
   opacity: 1;
