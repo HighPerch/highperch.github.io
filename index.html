@@ -805,8 +805,18 @@ nav {
   border: 1px solid rgba(253,250,246,0.06);
   border-radius: 2px;
   overflow: hidden;
+}   
+@media (max-width: 1024px) {
+  .cap-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
+@media (max-width: 640px) {
+  .cap-grid {
+    grid-template-columns: 1fr;
+  }
+}
 .cap-item {
   padding: 28px 24px;
   background: rgba(253,250,246,0.02);
