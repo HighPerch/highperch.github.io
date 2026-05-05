@@ -1320,6 +1320,42 @@ footer {
   .cards-2 { grid-template-columns: 1fr; }
   .svc-cat-header { grid-template-columns: 1fr; }
 }
+  /* ===== GLOBAL SPACING ===== */
+.sec {
+  padding: 100px 0;
+}
+
+/* ===== MOBILE OPTIMIZATION ===== */
+@media (max-width: 768px) {
+
+  /* section spacing lebih compact di HP */
+  .sec {
+    padding: 70px 0;
+  }
+
+  /* heading biar ga kegedean */
+  .h2 {
+    font-size: 28px;
+    line-height: 1.3;
+  }
+
+  /* benefit spacing */
+  .ben-item {
+    gap: 16px;
+  }
+
+  /* contact link biar enak di tap */
+  .clink {
+    padding: 16px;
+  }
+
+  /* icon sedikit lebih kecil biar proporsional */
+  .clink-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+} 
 </style>
 </head>
 <body>
